@@ -1,0 +1,14 @@
+{* Latte template *}
+
+{block content}
+<div class="col-sm-offset-4">
+    <h1 n:block="title">Kalkulačka</h1>
+</div>
+
+<div class="col-sm-offset-4">
+    {if ($result)}
+        <label class="col-sm-4 control-label">Výsledok je:</label> {$result}
+    {else}
+        <div>Nezadali ste ziadny matematicky priklad. <a n:href="TestIssue:test">Späť</a></div>
+    {/if}
+</div>

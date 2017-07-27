@@ -1,0 +1,35 @@
+{* Latte template *}
+
+
+{block content}
+
+<div class="col-sm-offset-4">
+    <h1 n:block=title>Test Issue</h1>
+</div>
+<form n:name="calculateForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-sm-4 control-label">Value:</label>
+        <div class="col-sm-4">
+            <input type="text" n:name="value" class="form-control" placeholder="value">
+        </div>
+    </div>
+    <div class="form-group">
+        <label n:name="function" class="col-sm-4 control-label">Function:</label>
+
+        {foreach $form[function]->items as $func => $label}
+            <div class="col-sm-1">
+                <label n:name="function:$func">
+                    <div class="col-sm-4">
+                        <input n:name="function:$func"> {$label}
+                    </div>
+                </label>
+            </div>
+        {/foreach}
+    </div>
+    <div class="col-sm-offset-4 col-sm-4">
+        <button type="submit" n:name="send" class="btn btn-primary">Send</button>
+    </div>
+</form>
+
+
+{/block}

@@ -1,0 +1,14 @@
+{* Latte template *}
+
+{block content}
+<div class="col-sm-offset-4">
+    <h1 n:block="title">JSON parser</h1>
+</div>
+
+<div class="col-sm-offset-4">
+    {if (isset($parser))}
+        <label class="col-sm-4 control-label">Výsledok je:</label> {$parser}
+    {else}
+        <div>Nefunkcne!</div>
+    {/if}
+</div>
