@@ -55,6 +55,17 @@ class TestIssueManager extends Object
         return 0 + $compute();
     }
 
+    private function callback($input){
+        if(is_numeric($input[1])){
+            return $input[1];
+        }
+        elseif(preg_match(self::PATTERN, $input[1], $match)){
+            return $this->compute($match[0]);
+        }
+
+        return 0;
+    }
+
     const PATTERN_JSON = '((?:\{[^\{\}\[\]]*\})|(?:\[[^\{\}\[\]]*\]))%';
 
     /**
@@ -68,7 +79,7 @@ class TestIssueManager extends Object
         $strings = array();
 
 
-        $input = str_replace($chrs,$escs,$input);
+        $json = str_replace($chrs,$escs,$input);
 
 
         $pieces = preg_split($rgxstr,$input,-1,PREG_SPLIT_DELIM_CAPTURE);
@@ -76,7 +87,7 @@ class TestIssueManager extends Object
             $strings []= str_replace($escs,$chrs,str_replace(array('\\\\','\\\'','\\"'),array('\\','\'','"'),substr($pieces[$i],1,-1)));
             $pieces[$i] = chr(2) . (count($strings)-1) . chr(2);
         }
-        $input = implode($pieces); */
+        $input = implode($pieces);*/
 
     }
 
